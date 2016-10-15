@@ -17,7 +17,7 @@
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
 
-                if(!results) return [0, 0, 0];
+                if(!results) return /*[0, 0, 0]*/undefined;
                 if(results[1] == '3d') return results.slice(2,5);
 
                 results.push(0);
