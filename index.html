@@ -23,13 +23,12 @@
                 results.push(0);
                 return results.slice(5, 8);
             }
-            setInterval(updatePosDisplay, 30);
+            setInterval(updatePosDisplay, 100);
             function updatePosDisplay(){
-                var transform = getTransform('#gazedot');
-                if(transform !== [0,0,0] && transform !== $('#pos').text()){
-                    $('#pos').text(transform);
+                $('#pos').text(getTransform('#gazedot'));
+                $('#pos_log').text(getTransform('#gazedot'));
+                
                 }
-                $('#pos_log').text += transform;
             }
         });
         </script>
