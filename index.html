@@ -27,7 +27,7 @@
             function updatePosDisplay(){
                 var transform = getTransform('#gazedot');
                 if(transform !== "0,0,0" && transform !== $('#pos').text()){
-                    $('#pos').text(getTransform('#gazedot'));
+                    $('#pos').text(transform);
                 }
                 $('#pos_log').text += transform;
             }
