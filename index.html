@@ -71,7 +71,7 @@ window.onload = function() {
     };
 
     //BEGIN ADDED CODE
-    function getTransform(el) {
+    /*function getTransform(el) {
     var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
 
     if(!results) return [0, 0, 0];
@@ -79,8 +79,8 @@ window.onload = function() {
 
     results.push(0);
     return results.slice(5, 8);
-    }
-    document.getElementById('pos').innerHTML = getTransform('#gazedot');
+    }*/
+    //document.getElementById('pos').innerHTML = getTransform('#gazedot');
     function checkIfReady() {
         if (webgazer.isReady()) {
             setup();
