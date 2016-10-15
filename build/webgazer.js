@@ -10188,7 +10188,7 @@ if (typeof exports !== 'undefined') {
 
     //DEBUG variables
     //debug control boolean
-    var showGazeDot = false;
+    var showGazeDot = true;
     //debug element (starts offscreen)
     var gazeDot = document.createElement('div');
     gazeDot.style.position = 'fixed';
@@ -10201,7 +10201,7 @@ if (typeof exports !== 'undefined') {
     gazeDot.style.display = 'none';
     gazeDot.style.borderRadius = '100%';
     gazeDot.style.opacity = '0.7';
-    gazeDot.id = "gazedot";
+    gazeDot.id = 'gazedot';
 
     var debugVideoLoc = '';
         
