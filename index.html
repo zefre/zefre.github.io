@@ -28,6 +28,21 @@
                 $('#pos').text(getTransform('#gazedot'));
                 console.log(getTransform('#gazedot'));
             }
+            function isInBounds(coords){
+                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                var bottomBound = .38567493112*h;
+                var topBound = .33884297522*h
+                var leftBound = .30769230769*w;
+                var rightBound = .693367239*w;
+                var left = coords[0];
+                var top = coords[1];
+                console.log(left);
+                console.log(top);
+                var x = left;
+                var y = h- top;
+                return x >= leftBound && x <= rightBound && y >= bottomBound && y <= topBound;
+            }
         });
         </script>
         <script src="build/webgazer.js"></script>
@@ -100,7 +115,7 @@ window.onbeforeunload = function() {
 }
         </script>
         <p id = "pos" style="position: fixed; bottom: 0; width:100%; text-align: center;color:green;">POSITION NOT SET</p>
-        <p id = "pos_log" style="position: fixed; top: 0;right:0; width:50%; text-align: center;color:green;font-size:8px;"></p>
+        <p id = "isinbounds">NOT SET</p> 
         <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:blue;opacity:0.2;"></div>
     </BODY>
 </HTML>
