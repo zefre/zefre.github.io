@@ -9,12 +9,7 @@
     </HEAD>
     <BODY LANG="en-US" LINK="#0000ff" DIR="LTR">
     <div id="mydiv">
-        <h1 style="color:#C0C0C0" align="right">
-            Click on a few locations within the screen<br>
-            while looking purposefully at the cursor.<br>
-            Both clicks and cursor movements<br>
-            make the predictions more accurate. 
-        </h1>
+        
     </div>
 
         <script>
@@ -28,9 +23,13 @@
                 results.push(0);
                 return results.slice(5, 8);
             }
-            setInterval(updatePosDisplay, 100);
+            setInterval(updatePosDisplay, 30);
             function updatePosDisplay(){
-                $('#pos').text(getTransform('#gazedot'));
+                var transform = getTransform('#gazedot');
+                if(transform !== "0,0,0" && transform !== $('#pos').text()){
+                    $('#pos').text(getTransform('#gazedot'));
+                }
+                $('#pos_log').text += transform;
             }
         });
         </script>
@@ -104,5 +103,6 @@ window.onbeforeunload = function() {
 }
         </script>
         <p id = "pos" style="position: fixed; bottom: 0; width:100%; text-align: center;color:green;">POSITION NOT SET</p>
+        <p id = "pos_log" style="position: fixed; top: 0;right:0; width:100%; text-align: center;color:green;font-size:8px;"></p>
     </BODY>
 </HTML>
