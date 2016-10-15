@@ -40,10 +40,12 @@
                 var rightBound = .693367239*w;
                 var left = coords[0];
                 var top = coords[1];
-                console.log(w);
-                console.log(h);
                 var x = left;
                 var y = h- top;
+                console.log('x: '+x);
+                console.log('y: '+y);
+                console.log('bottom: '+bottomBound);
+                console.log('top: '+topBound);
                 return x >= leftBound && x <= rightBound && y >= bottomBound && y <= topBound;
             }
         });
@@ -119,6 +121,6 @@ window.onbeforeunload = function() {
         </script>
         <p id = "pos" style="position: fixed; bottom: 0; width:100%; text-align: center;color:green;">POSITION NOT SET</p>
         <p id = "isinbounds" style = "position:fixed;bottom:10;left:0;color:blue;">NOT SET</p> 
-        <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:blue;opacity:0.2;"></div>
+        <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:red;opacity:0.2;"></div>
     </BODY>
 </HTML>
