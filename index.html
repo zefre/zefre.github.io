@@ -32,8 +32,8 @@
                 $('#isinbounds').text(isInBounds(transform));
             }
             function isInBounds(coords){
-                var w = $window.innerWidth();
-                var h = $(window).height();
+                var w = window.innerWidth;
+                var h = window.innerHeight;
                 var topBound = .38567493112*h;
                 var bottomBound = .33884297522*h;
                 var leftBound = .30769230769*w;
@@ -119,6 +119,6 @@ window.onbeforeunload = function() {
         </script>
         <p id = "pos" style="position: fixed; bottom: 0; width:100%; text-align: center;color:green;">POSITION NOT SET</p>
         <p id = "isinbounds" style = "position:fixed;bottom:10;left:0;color:blue;">NOT SET</p> 
-        <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:red;opacity:0.2;"></div>
+        <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:blue;opacity:0.2;"></div>
     </BODY>
 </HTML>
