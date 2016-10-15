@@ -32,7 +32,7 @@
                 $('#isinbounds').text(isInBounds(transform));
             }
             function isInBounds(coords){
-                var w = $(window).width();
+                var w = $window.innerWidth();
                 var h = $(window).height();
                 var topBound = .38567493112*h;
                 var bottomBound = .33884297522*h;
