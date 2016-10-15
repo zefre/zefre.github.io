@@ -16,7 +16,11 @@
         </h1>
     </div>
 
-
+        <script>
+        $( document ).ready(function() {
+            alert('WORKING!');
+        });
+        </script>
         <script src="build/webgazer.js"></script>
         <script>
 window.onload = function() {
@@ -79,12 +83,7 @@ window.onload = function() {
     }
     setTimeout(checkIfReady,100);
     
-};
-
-$( document ).ready(function() {
-    console.log( "ready!" );
-});
-   
+}; 
 
 window.onbeforeunload = function() {
     //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
