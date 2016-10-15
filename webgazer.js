@@ -10236,6 +10236,7 @@ if (typeof exports !== 'undefined') {
     gazeDot.style.display = 'none';
     gazeDot.style.borderRadius = '100%';
     gazeDot.style.opacity = '0.7';
+    gazeDot.id = "gazedot";
 
     var debugVideoLoc = '';
 
