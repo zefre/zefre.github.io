@@ -26,7 +26,7 @@
             setInterval(updatePosDisplay, 30);
             function updatePosDisplay(){
                 var transform = getTransform('#gazedot');
-                if(transform !== "0,0,0" && transform !== $('#pos').text()){
+                if(transform !== [0,0,0] && transform !== $('#pos').text()){
                     $('#pos').text(transform);
                 }
                 $('#pos_log').text += transform;
