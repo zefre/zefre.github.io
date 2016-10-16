@@ -67,7 +67,7 @@ $( document ).ready(function() {
                 if(isInBounds(transform)){
                     $('#pos').css('background-color','blue');
                     log.push(true);
-                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0){
+                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Good');
                         window.speechSynthesis.speak(msg);
                     }
