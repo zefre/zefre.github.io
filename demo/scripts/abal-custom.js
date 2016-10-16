@@ -3,10 +3,15 @@ $( document ).ready(function() {
             
 
             /*GLOBAL STATE VARS */
-            var mode = "none";
-            var pauseButtonState = "pause";
-            var hasCalib = false;
-            var inBoundsCount = 0;
+            mode = "none";
+            pauseButtonState = "pause";
+            hasCalib = false;
+            log = [];
+            inBetweenSpeech = 3; //seconds
+            timeOut = 5; //seconds
+            successCount = 0; //count of # of times in bounds
+            loopRun = 0;
+            wasInBounds = false;
             /*END GLOBAL STATE */
 
 
@@ -53,22 +58,29 @@ $( document ).ready(function() {
             }
             setInterval(updatePosDisplay, 100);
             function updatePosDisplay(){
-                var inBoundsTimeOut = 5; //seconds
-                var outOfBoundsTimeOut = 1; //seconds
-                var outOfBoundsCount = 0;
-                var inBetweenSpeech = 3;
-                var isInBoundsCount = 0;
                 var transform = getTransform('#gazedot');
+                ++loopRun;
                 $('#pos').text(transform);
                 console.log(transform);
                 console.log(isInBounds(transform));
                 //$('#isinbounds').text(isInBounds(transform)) removed
                 if(isInBounds(transform)){
                     $('#pos').css('background-color','blue');
+                    log.push(true);
+                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0){
+                        var msg = new SpeechSynthesisUtterance('Good');
+                        window.speechSynthesis.speak(msg);
+                    }
+                    wasInBounds = true;
                 }
                 else{
-                    $('#pos').css('background-color','red');   
-                }
+                    $('#pos').css('background-color','red');
+                    log.push(false);
+                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
+                        var msg = new SpeechSynthesisUtterance('Make eye contact');
+                        window.speechSynthesis.speak(msg);
+                    }
+                    wasInBounds = false;
                 }
                 
             
