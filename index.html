@@ -31,7 +31,7 @@
                     webgazer.showPredictionPoints(true);
                 }
             });
-            /*$("#pause").click(function(){
+            $("#pause").click(function(){
                 if(pauseButtonState === "pause"){
                     pauseButtonState = "resume";
                     webgazer.pause();
@@ -42,7 +42,7 @@
                     webgazer.resume();
                     $("#pause").html('PAUSE');
                 }
-            }); */
+            });
             
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
