@@ -4,3 +4,7 @@ body{
 	background-position: center;
 	background-size: 36.63003663%;
 }
+#buttonbox button{
+	width: 100%;
+	height: 20px;
+}
