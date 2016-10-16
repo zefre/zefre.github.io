@@ -25,11 +25,25 @@
             }
             setInterval(updatePosDisplay, 100);
             function updatePosDisplay(){
+                var inBoundsTimeOut = 5; //seconds
+                var outOfBoundsTimeOut = 1; //seconds
+                var outOfBoundsCount = 0;
+                var isInBoundsCount = 0;
+                var inBounds = isInBounds(transform);
                 var transform = getTransform('#gazedot');
                 $('#pos').text(transform);
                 console.log(transform);
-                console.log(isInBounds(transform));
-                $('#isinbounds').text(isInBounds(transform));
+                console.log(inBounds);
+                $('#isinbounds').text(inBounds)
+                
+            }
+            function handleBoundPosition(inBounds){
+                if(inBounds){
+                    $('body').style.background-color = 'blue';
+                }
+                else{
+                    $('body').style.background-color = 'red';
+                }   
             }
             function isInBounds(coords){
                 var w = window.innerWidth;
