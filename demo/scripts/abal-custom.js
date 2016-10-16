@@ -7,7 +7,7 @@ $( document ).ready(function() {
             pauseButtonState = "pause";
             hasCalib = false;
             log = [];
-            inBetweenSpeech = 3; //seconds
+            inBetweenSpeech = 5; //seconds
             timeOut = 5; //seconds
             successCount = 0; //count of # of times in bounds
             loopRun = 0;
@@ -70,6 +70,7 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Good');
                         window.speechSynthesis.speak(msg);
+                        loopRun = 0;
                     }
                     wasInBounds = true;
                 }
@@ -79,6 +80,7 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Make eye contact');
                         window.speechSynthesis.speak(msg);
+                        loopRun = 0;
                     }
                     wasInBounds = false;
                 }
