@@ -20,9 +20,9 @@ $( document ).ready(function() {
                     var msg = new SpeechSynthesisUtterance('Move your cursor and follow it with your eyes');
                     setTimeout(window.speechSynthesis.speak(msg), 2000);
                     msg = new SpeechSynthesisUtterance('Click in various spots while looking at the cursor');
-                    setTimeout(window.speechSynthesis.speak(msg), 2000);
+                    setTimeout(window.speechSynthesis.speak(msg), 10000);
                     msg = new SpeechSynthesisUtterance('Make sure you get points on and around the eyes and face');
-                    setTimeout(window.speechSynthesis.speak(msg), 2000);
+                    setTimeout(window.speechSynthesis.speak(msg), 10000);
                 }
                 mode = "calibration";
                 webgazer.showPredictionPoints(true);
