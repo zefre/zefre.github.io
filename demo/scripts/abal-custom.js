@@ -82,6 +82,7 @@ $( document ).ready(function() {
                     }
                     wasInBounds = false;
                 }
+            }
                 
             
             function isInBounds(coords){
