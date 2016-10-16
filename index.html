@@ -15,6 +15,7 @@
         <script>
         $( document ).ready(function() {
             var mode = "none";
+            var pauseButtonState = "pause";
             var hasCalib = false;
             $("#calibMode").click(function(){
                 hasCalib = true;
@@ -26,7 +27,19 @@
                     alert("Please calibrate first");
                     return false;
                 }
-
+            }
+            $("#pause").click(function(){
+                if(pauseButtonState === "pause"){
+                    pauseButtonState = "resume";
+                    webgazer.pause();
+                    $("#pause").html('RESUME');
+                }
+                else if(pauseButtonState === "resume"){
+                    pauseButtonState = "pause";
+                    webgazer.resume();
+                    $("#pause").html('PAUSE');
+                }
+            }
             });  
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
