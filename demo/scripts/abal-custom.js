@@ -16,10 +16,18 @@ $( document ).ready(function() {
 
 
             $("#calibMode").click(function(){
-                hasCalib = true;
+                if(!hasCalib){
+                    var msg = new SpeechSynthesisUtterance('Move your cursor and follow it with your eyes');
+                    setTimeout(window.speechSynthesis.speak(msg), 2000);
+                    msg = new SpeechSynthesisUtterance('Click in various spots while looking at the cursor');
+                    setTimeout(window.speechSynthesis.speak(msg), 2000);
+                    msg = new SpeechSynthesisUtterance('Make sure you get points on and around the eyes and face');
+                    setTimeout(window.speechSynthesis.speak(msg), 2000);
+                }
                 mode = "calibration";
                 webgazer.showPredictionPoints(true);
                 $('#gazedot').css('opacity',0.7);
+                hasCalib = true;
             });
             $("#useMode").click(function(){
                 if(!hasCalib){
@@ -27,6 +35,9 @@ $( document ).ready(function() {
                     return false;
                 }
                 else{
+                    if(mode !== "use"){
+                        loopRun= 0; //reset, so that speech doesn't go bonkers
+                    }
                     mode = "use";
                     webgazer.showPredictionPoints(true);
                     $('#gazedot').css('opacity',0);
@@ -68,8 +79,10 @@ $( document ).ready(function() {
                     $('#pos').css('background-color','blue');
                     log.push(true);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
-                        var msg = new SpeechSynthesisUtterance('Good');
-                        window.speechSynthesis.speak(msg);
+                        if(mode !== "calibration"){
+                            var msg = new SpeechSynthesisUtterance('Good');
+                            window.speechSynthesis.speak(msg);
+                        }
                         wasInBounds = true;
                     }
                 }
@@ -77,8 +90,10 @@ $( document ).ready(function() {
                     $('#pos').css('background-color','red');
                     log.push(false);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
-                        var msg = new SpeechSynthesisUtterance('Make eye contact');
-                        window.speechSynthesis.speak(msg);
+                        if(mode !== calibration){
+                            var msg = new SpeechSynthesisUtterance('Make eye contact');
+                            window.speechSynthesis.speak(msg);
+                        }
                     }
                     wasInBounds = false;
                 }
