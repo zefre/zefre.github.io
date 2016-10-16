@@ -39,10 +39,10 @@
             }
             function handleBoundPosition(inBounds){
                 if(inBounds){
-                    $('body').style.background-color = 'blue';
+                    $(this).css('background-color', 'red');
                 }
                 else{
-                    $('body').style.background-color = 'red';
+                    $(this).css('background-color', 'blue');
                 }   
             }
             function isInBounds(coords){
