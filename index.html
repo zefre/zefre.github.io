@@ -14,6 +14,20 @@
 
         <script>
         $( document ).ready(function() {
+            var mode = "none";
+            var hasCalib = false;
+            $("#calibMode").click(function(){
+                hasCalib = true;
+                webgazer.showPredictionPoints(true);
+                
+            });
+            $("#useode ").click(function(){
+                if(!hasCalib){
+                    alert("Please calibrate first");
+                    return false;
+                }
+
+            });  
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
 
@@ -73,7 +87,7 @@
                  //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
                 })
                 .begin()
-                .showPredictionPoints(true); /* shows a square every 100 milliseconds where current prediction is */
+                .showPredictionPoints(false); /* shows a square every 100 milliseconds where current prediction is */
 
             var width = 320;
             var height = 240;
