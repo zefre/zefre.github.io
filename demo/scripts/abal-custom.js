@@ -90,7 +90,7 @@ $( document ).ready(function() {
                     $('#pos').css('background-color','red');
                     log.push(false);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
-                        if(mode !== calibration){
+                        if(mode !== "calibration"){
                             var msg = new SpeechSynthesisUtterance('Make eye contact');
                             window.speechSynthesis.speak(msg);
                         }
