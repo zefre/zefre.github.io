@@ -70,7 +70,6 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Good');
                         window.speechSynthesis.speak(msg);
-                        loopRun = 0;
                     }
                     wasInBounds = true;
                 }
@@ -80,7 +79,6 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Make eye contact');
                         window.speechSynthesis.speak(msg);
-                        loopRun = 0;
                     }
                     wasInBounds = false;
                 }
