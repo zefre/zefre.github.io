@@ -1,10 +1,18 @@
 
 $( document ).ready(function() {
+            
+
+            /*GLOBAL STATE VARS */
             var mode = "none";
             var pauseButtonState = "pause";
             var hasCalib = false;
+            var inBoundsCount = 0;
+            /*END GLOBAL STATE */
+
+
             $("#calibMode").click(function(){
                 hasCalib = true;
+                mode = "calibration";
                 webgazer.showPredictionPoints(true);
                 $('#gazedot').css('opacity',0.7);
             });
@@ -14,17 +22,20 @@ $( document ).ready(function() {
                     return false;
                 }
                 else{
+                    mode = "use";
                     webgazer.showPredictionPoints(true);
                     $('#gazedot').css('opacity',0);
                 }
             });
             $("#pause").click(function(){
                 if(pauseButtonState === "pause"){
+                    mode = "pause";
                     pauseButtonState = "resume";
                     webgazer.pause();
                     $("#pause").html('RESUME');
                 }
                 else if(pauseButtonState === "resume"){
+                    mode = "resume";
                     pauseButtonState = "pause";
                     webgazer.resume();
                     $("#pause").html('PAUSE');
