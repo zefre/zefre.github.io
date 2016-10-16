@@ -36,14 +36,14 @@
                 console.log(isInBounds(transform));
                 $('#isinbounds').text(isInBounds(transform))
                 if(isInBounds(transform)){
-                    if(isInBoundsCount === 0 || isInBoundsCount % (inBetweenSpeech * 10) === 0){
+                    if(isInBoundsCount === 0 || isInBoundsCount % (inBetweenSpeech * 10000) === 0){
                         var utterance = new SpeechSynthesisUtterance('Good');
                         window.speechSynthesis.speak(utterance);
                         ++isInBoundsCount;
                     } 
                 }
                 else{
-                    if(outOfBoundsCount === 0 || outOfBoundsCount % (inBetweenSpeech * 10) === 0){
+                    if(outOfBoundsCount === 0 || outOfBoundsCount % (inBetweenSpeech * 10000) === 0){
                         var utterance = new SpeechSynthesisUtterance('Look at me');
                         window.speechSynthesis.speak(utterance);
                         ++outOfBoundsCount;
