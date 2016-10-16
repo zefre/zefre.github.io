@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+    <HEAD>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+        <TITLE>ABA Lock MVP</TITLE>
+        <link rel = "stylesheet" href = "styles/style.css">
+    </HEAD>
+    <BODY LANG="en-US" LINK="#0000ff" DIR="LTR">
+    <div id="mydiv">
+        
+    </div>
+
+        <script>
+        $( document ).ready(function() {
+            var mode = "none";
+            var pauseButtonState = "pause";
+            var hasCalib = false;
+            $("#calibMode").click(function(){
+                hasCalib = true;
+                webgazer.showPredictionPoints(true);
+                $('#gazedot').css('opacity',0.7);
+            });
+            $("#useMode").click(function(){
+                if(!hasCalib){
+                    alert("Please calibrate first");
+                    return false;
+                }
+                else{
+                    webgazer.showPredictionPoints(true);
+                    $('#gazedot').css('opacity',0);
+                }
+            });
+            $("#pause").click(function(){
+                if(pauseButtonState === "pause"){
+                    pauseButtonState = "resume";
+                    webgazer.pause();
+                    $("#pause").html('RESUME');
+                }
+                else if(pauseButtonState === "resume"){
+                    pauseButtonState = "pause";
+                    webgazer.resume();
+                    $("#pause").html('PAUSE');
+                }
+            });
+            
+            function getTransform(el) {
+                var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
+
+                if(!results) return /*[0, 0, 0]*/undefined;
+                if(results[1] == '3d') return results.slice(2,5);
+
+                results.push(0);
+                return results.slice(5, 8);
+            }
+            setInterval(updatePosDisplay, 100);
+            function updatePosDisplay(){
+                var inBoundsTimeOut = 5; //seconds
+                var outOfBoundsTimeOut = 1; //seconds
+                var outOfBoundsCount = 0;
+                var inBetweenSpeech = 3;
+                var isInBoundsCount = 0;
+                var transform = getTransform('#gazedot');
+                $('#pos').text(transform);
+                console.log(transform);
+                console.log(isInBounds(transform));
+                //$('#isinbounds').text(isInBounds(transform)) removed
+                if(isInBounds(transform)){
+                    $('#pos').css('background-color','blue');
+                }
+                else{
+                    $('#pos').css('background-color','red');   
+                }
+                }
+                
+            
+            function isInBounds(coords){
+                var w = window.innerWidth;
+                var h = window.innerHeight;
+                var topBound = .66115702478*h;
+                var bottomBound = .38567493112*h;
+                var leftBound = .30769230769*w;
+                var rightBound = .69336723881*w;
+                var left = coords[0];
+                var top = coords[1];
+                var x = left;
+                var y = h- top;
+                console.log('x: '+x);
+                console.log('y: '+y);
+                console.log('bottom: '+bottomBound);
+                console.log('top: '+topBound);
+                return x >= leftBound && x <= rightBound && y >= bottomBound && y <= topBound;
+            }
+        });
+        </script>
+        <script src="build/webgazer.js"></script>
+        <script>
+        window.onload = function() {
+            webgazer.setRegression('ridge') /* currently must set regression and tracker */
+                .setTracker('clmtrackr')
+                .setGazeListener(function(data, clock) {
+                 //   console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
+                 //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
+                })
+                .begin()
+                .showPredictionPoints(false); /* shows a square every 100 milliseconds where current prediction is */
+
+            var width = 320;
+            var height = 240;
+            var topDist = '0px';
+            var leftDist = '0px';
+    
+            var setup = function() {
+                var video = document.getElementById('webgazerVideoFeed');
+                video.style.display = 'block';
+                video.style.position = 'absolute';
+                video.style.top = topDist;
+                video.style.left = leftDist;
+                video.width = width;
+                video.height = height;
+                video.style.margin = '0px';
+
+                webgazer.params.imgWidth = width;
+                webgazer.params.imgHeight = height;
+
+                var overlay = document.createElement('canvas');
+                overlay.id = 'overlay';
+                overlay.style.position = 'absolute';
+                overlay.width = width;
+                overlay.height = height;
+                overlay.style.top = topDist;
+                overlay.style.left = leftDist;
+                overlay.style.margin = '0px';
+
+                document.body.appendChild(overlay);
+
+                var cl = webgazer.getTracker().clm;
+
+                function drawLoop() {
+                    requestAnimFrame(drawLoop);
+                    overlay.getContext('2d').clearRect(0,0,width,height);
+                    if (cl.getCurrentPosition()) {
+                        cl.draw(overlay);
+                    }
+                }
+                drawLoop();
+            };
+
+            function checkIfReady() {
+                if (webgazer.isReady()) {
+                    setup();
+                } else {
+                    setTimeout(checkIfReady, 100);
+                }
+            }
+            setTimeout(checkIfReady,100);
+    
+}; 
+
+window.onbeforeunload = function() {
+    //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
+    window.localStorage.clear(); //Comment out if you want to save data across different sessions 
+}
+        </script> 
+        <div id = "buttonbox" style = "width:8%;height:90%;background-color:blue;opacity:.3;float:right;">
+            <h2>CONTROL</h2>
+            <button id = "calibMode">CALIBRATE</button>
+            <br>
+            <button id = "useMode">USE</button>
+            <br>
+            <button id = "pause">PAUSE</button>
+        </div>
+        <p id = "pos" style = "text-align:center;bottom:0;text-align:center; position:fixed">NOT SET</p>
+        <div id = "rect" style= "width:38.567493112%;height:27.548209366%;position:fixed;top:38.567493112%;left:30.769230769%;background:blue;opacity:0.2;"></div>
+    </BODY>
+</HTML>
