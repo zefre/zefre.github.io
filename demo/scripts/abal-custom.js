@@ -1,8 +1,15 @@
 
 $( document ).ready(function() {
+            /* GLOBAL STATE VARS */
+            var inBoundsCount = 0;
+            var outOfBoundsCount = 0;
+            var inBetweenSpeech = 3; //in seconds
+            /*END GLOBAL STATE VARS */
+
             var mode = "none";
             var pauseButtonState = "pause";
             var hasCalib = false;
+            
             $("#calibMode").click(function(){
                 hasCalib = true;
                 webgazer.showPredictionPoints(true);
