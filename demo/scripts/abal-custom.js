@@ -70,8 +70,8 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         var msg = new SpeechSynthesisUtterance('Good');
                         window.speechSynthesis.speak(msg);
+                        wasInBounds = true;
                     }
-                    wasInBounds = true;
                 }
                 else{
                     $('#pos').css('background-color','red');
