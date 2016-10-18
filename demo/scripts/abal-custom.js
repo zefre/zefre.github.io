@@ -8,7 +8,7 @@ $( document ).ready(function() {
             hasCalib = false;
             log = [];
             inBetweenSpeech = 5; //seconds
-            timeOut = 10; //seconds
+            timeOut = 3; //seconds
             successCount = 0; //count of # of times in bounds
             loopRun = 0;
             loopSuccessRun = 0;
