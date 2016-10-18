@@ -97,7 +97,7 @@ $( document ).ready(function() {
 
 
             $('#relinquish').click(function(){
-                if(mode == "developer" }} mode == "forceIn" || mode == "forceOut"){
+                if(mode == "developer" || mode == "forceIn" || mode == "forceOut"){
                     mode = "use";
                 }
             });
