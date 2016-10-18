@@ -129,7 +129,7 @@ $( document ).ready(function() {
                             if(loopSuccessRun >= timeOut * 10){
                                 $('#buttonbox').css('background-color', 'green');
                                 console.log("success");
-                                document.getElementById('buttonbox').id = 'buttonboximmune';
+                                window.location.href = 'success.html';
                             }
                     }
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
