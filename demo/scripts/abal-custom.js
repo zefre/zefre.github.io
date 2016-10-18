@@ -78,18 +78,20 @@ $( document ).ready(function() {
             });
 
             $("forceIn").click(function(){
-                if(mode !== "developer" && mode !== "forceOut"){
+                if(mode !== "developer"){
                     alert("You must be in developer mode to use this feature");
                 }
                 else mode = "forceIn";
+                console.log(mode);
             });
             
 
             $("forceOut").click(function(){
-                if(mode !== "developer" && mode !== "forceOut"){
+                if(mode !== "developer"){
                     alert("You must be in developer mode to use this feature");
                 }
                 else mode = "forceOut";
+                console.log(mode);
             });
             /*END LISTENERS*/
 
