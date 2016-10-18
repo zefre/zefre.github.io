@@ -84,6 +84,7 @@ $( document ).ready(function() {
                             ++loopSuccessRun;
                             if(loopSuccessRun == 30){
                                 $('#buttonbox').css('background-color', 'green');
+                                console.log("success");
                                 document.getElementById('buttonbox').id = 'buttonboximmune';
                             }
                             var msg = new SpeechSynthesisUtterance('Good');
