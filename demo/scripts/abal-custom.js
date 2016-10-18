@@ -8,7 +8,7 @@ $( document ).ready(function() {
             hasCalib = false;
             log = [];
             inBetweenSpeech = 5; //seconds
-            timeOut = 5; //seconds
+            timeOut = 10; //seconds
             successCount = 0; //count of # of times in bounds
             loopRun = 0;
             loopSuccessRun = 0;
@@ -81,7 +81,7 @@ $( document ).ready(function() {
                     log.push(true);
                     if(mode !== "calibration"){
                         ++loopSuccessRun;
-                            if(loopSuccessRun >= 3){
+                            if(loopSuccessRun >= timeOut * 10){
                                 $('#buttonbox').css('background-color', 'green');
                                 console.log("success");
                                 document.getElementById('buttonbox').id = 'buttonboximmune';
