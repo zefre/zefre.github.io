@@ -73,12 +73,13 @@ $( document ).ready(function() {
                 }
                 else{
                     mode = "use";
+                    $('#gazedot').css('opacity',0);
                 }
                 
             });
 
             $("#forceIn").click(function(){
-                if(mode !== "developer"){
+                if(mode !== "developer" && mode !== "forceOut"){
                     alert("You must be in developer mode to use this feature");
                 }
                 else mode = "forceIn";
@@ -87,11 +88,18 @@ $( document ).ready(function() {
             
 
             $("#forceOut").click(function(){
-                if(mode !== "developer"){
+                if(mode !== "developer" && mode !== "forceIn"){
                     alert("You must be in developer mode to use this feature");
                 }
                 else mode = "forceOut";
                 console.log(mode);
+            });
+
+
+            $('#relinquish').click(function(){
+                if(mode !== "developer" && mode !== "forceIn" && mode !== "forceOut"){
+                    mode = "use";
+                }
             });
             /*END LISTENERS*/
 
