@@ -82,7 +82,7 @@ $( document ).ready(function() {
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         if(mode !== "calibration"){
                             ++loopSuccessRun;
-                            if(loopSuccessRun == 30){
+                            if(loopSuccessRun >= 3){
                                 $('#buttonbox').css('background-color', 'green');
                                 console.log("success");
                                 document.getElementById('buttonbox').id = 'buttonboximmune';
