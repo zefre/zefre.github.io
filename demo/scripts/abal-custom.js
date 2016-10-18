@@ -68,15 +68,16 @@ $( document ).ready(function() {
             $("#devMode").click(function(){
                 if(mode !== "developer" && mode !== "forceOut" && mode !== "forceIn"){
                     mode = "developer";
+                    $('#gazedot').css('opacity',0.7);
                 }
                 else{
                     mode = "use";
                 }
-                $('#gazedot').css('opacity',0.7);
+                
             });
 
             $("forceIn").click(function(){
-                if(mode !== "devMode" && mode !== "forceOut"){
+                if(mode !== "developer" && mode !== "forceOut"){
                     alert("You must be in developer mode to use this feature");
                     return false;
                 }
@@ -85,7 +86,7 @@ $( document ).ready(function() {
             
 
             $("forceOut").click(function(){
-                if(mode !== "devMode" && mode !== "forceOut"){
+                if(mode !== "developer" && mode !== "forceOut"){
                     alert("You must be in developer mode to use this feature");
                     return false;
                 }
