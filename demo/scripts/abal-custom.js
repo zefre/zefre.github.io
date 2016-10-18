@@ -79,14 +79,16 @@ $( document ).ready(function() {
                 if(isInBounds(transform)){
                     $('#pos').css('background-color','blue');
                     log.push(true);
-                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
-                        if(mode !== "calibration"){
-                            ++loopSuccessRun;
+                    if(mode !== "calibration"){
+                        ++loopSuccessRun;
                             if(loopSuccessRun >= 3){
                                 $('#buttonbox').css('background-color', 'green');
                                 console.log("success");
                                 document.getElementById('buttonbox').id = 'buttonboximmune';
                             }
+                    }
+                    if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
+                        if(mode !== "calibration"){
                             var msg = new SpeechSynthesisUtterance('Good');
                             window.speechSynthesis.speak(msg);
                         }
