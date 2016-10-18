@@ -15,6 +15,8 @@ $( document ).ready(function() {
             wasInBounds = false;
             /*END GLOBAL STATE */
 
+            /* BUTTON LISTENERS */
+            
 
             $("#calibMode").click(function(){
                 if(!hasCalib){
@@ -30,6 +32,8 @@ $( document ).ready(function() {
                 $('#gazedot').css('opacity',0.7);
                 hasCalib = true;
             });
+
+
             $("#useMode").click(function(){
                 if(!hasCalib){
                     alert("Please calibrate first");
@@ -44,6 +48,8 @@ $( document ).ready(function() {
                     $('#gazedot').css('opacity',0);
                 }
             });
+
+
             $("#pause").click(function(){
                 if(pauseButtonState === "pause"){
                     mode = "pause";
@@ -58,6 +64,35 @@ $( document ).ready(function() {
                     $("#pause").html('PAUSE');
                 }
             });
+
+            $("#devMode").click(function(){
+                if(mode !== "developer" && mode !== "forceOut" && mode !== "forceIn"){
+                    mode = "developer";
+                }
+                else{
+                    mode = "use";
+                }
+                $('#gazedot').css('opacity',0.7);
+            });
+
+            $("forceIn").click(function(){
+                if(mode !== "devMode" && mode !== "forceOut"){
+                    alert("You must be in developer mode to use this feature");
+                    return false;
+                }
+                mode = "forceIn";
+            });
+            
+
+            $("forceOut").click(function(){
+                if(mode !== "devMode" && mode !== "forceOut"){
+                    alert("You must be in developer mode to use this feature");
+                    return false;
+                }
+                mode = "forceOut";
+            });
+            /*END LISTENERS*/
+
             
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
@@ -76,7 +111,7 @@ $( document ).ready(function() {
                 console.log(transform);
                 console.log(isInBounds(transform));
                 //$('#isinbounds').text(isInBounds(transform)) removed
-                if(isInBounds(transform)){
+                if(isInBounds(transform) && mode !== "forceOut" || mode === "forceIn"){
                     $('#pos').css('background-color','blue');
                     log.push(true);
                     if(mode !== "calibration"){
@@ -95,7 +130,7 @@ $( document ).ready(function() {
                         wasInBounds = true;
                     }
                 }
-                else{
+                else if(!isInBounds(transform) && mode !== "forceIn" || mode === "forceOut"){
                     $('#pos').css('background-color','red');
                     log.push(false);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
