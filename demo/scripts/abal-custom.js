@@ -11,6 +11,7 @@ $( document ).ready(function() {
             timeOut = 5; //seconds
             successCount = 0; //count of # of times in bounds
             loopRun = 0;
+            loopSuccessRun = 0;
             wasInBounds = false;
             /*END GLOBAL STATE */
 
@@ -80,6 +81,11 @@ $( document ).ready(function() {
                     log.push(true);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||!wasInBounds){
                         if(mode !== "calibration"){
+                            ++loopSuccessRun;
+                            if(loopSuccessRun == 30){
+                                $('#buttonbox').css('background-color', 'green');
+                                document.getElementById('buttonbox').id = 'buttonboximmune';
+                            }
                             var msg = new SpeechSynthesisUtterance('Good');
                             window.speechSynthesis.speak(msg);
                         }
@@ -91,6 +97,7 @@ $( document ).ready(function() {
                     log.push(false);
                     if(loopRun % (10*inBetweenSpeech) === 0|| loopRun === 0||wasInBounds){
                         if(mode !== "calibration"){
+                            loopSuccessRun = 0;
                             var msg = new SpeechSynthesisUtterance('Make eye contact');
                             window.speechSynthesis.speak(msg);
                         }
