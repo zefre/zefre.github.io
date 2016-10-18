@@ -77,7 +77,7 @@ $( document ).ready(function() {
                 
             });
 
-            $("forceIn").click(function(){
+            $("#forceIn").click(function(){
                 if(mode !== "developer"){
                     alert("You must be in developer mode to use this feature");
                 }
@@ -86,7 +86,7 @@ $( document ).ready(function() {
             });
             
 
-            $("forceOut").click(function(){
+            $("#forceOut").click(function(){
                 if(mode !== "developer"){
                     alert("You must be in developer mode to use this feature");
                 }
