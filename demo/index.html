@@ -82,16 +82,17 @@ window.onbeforeunload = function() {
     window.localStorage.clear(); //Comment out if you want to save data across different sessions 
 }
         </script> 
-        <div id = "buttonbox" style = "width:8%;height:90%;background-color:blue;opacity:.3;float:right;">
+        <div id = "buttonbox" style = "width:8%;height:42.5%;background-color:blue;opacity:.3;float:right;">
             <h2>CONTROL</h2>
             <button id = "calibMode">CALIBRATE</button>
             <br>
             <button id = "useMode">USE</button>
-            <br>
-            <button id = "devMode">DEVELOPER</button>
-            <br>
+            <br>           
             <button id = "pause">PAUSE</button>
-            <br>
+        </div>
+        <div id = "devbox" style = "width:8%;height:42.5%;background-color:blue;opacity:.3;float:right;clear:both;">
+            <h2>DEV.</h2>
+            <button id = "devMode">DEVELOPER</button>
             <button id = "forceIn">IN</button>
             <br>
             <button id = "forceOut">OUT</button>
