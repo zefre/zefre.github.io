@@ -28,7 +28,7 @@ $( document ).ready(function() {
                     //setTimeout(window.speechSynthesis.speak(msg), 10000);
                 }
                 mode = "calibration";
-                $('#videobox').css({'display':'block','margin':'0 auto'});
+                $('#videobox').css({'display':'block','margin':'0 auto','width': '400px','height':'400px'});
                 webgazer.showPredictionPoints(true);
                 $('#gazedot').css('opacity',0.7);
                 hasCalib = true;
