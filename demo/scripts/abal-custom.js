@@ -20,14 +20,15 @@ $( document ).ready(function() {
 
             $("#calibMode").click(function(){
                 if(!hasCalib){
-                    var msg = new SpeechSynthesisUtterance('Move your cursor and follow it with your eyes');
-                    setTimeout(window.speechSynthesis.speak(msg), 2000);
-                    msg = new SpeechSynthesisUtterance('Click in various spots while looking at the cursor');
-                    setTimeout(window.speechSynthesis.speak(msg), 10000);
-                    msg = new SpeechSynthesisUtterance('Make sure you get points on and around the eyes and face');
-                    setTimeout(window.speechSynthesis.speak(msg), 10000);
+                    //var msg = new SpeechSynthesisUtterance('Move your cursor and follow it with your eyes');
+                    //setTimeout(window.speechSynthesis.speak(msg), 2000);
+                    //msg = new SpeechSynthesisUtterance('Click in various spots while looking at the cursor');
+                    //setTimeout(window.speechSynthesis.speak(msg), 10000);
+                    //msg = new SpeechSynthesisUtterance('Make sure you get points on and around the eyes and face');
+                    //setTimeout(window.speechSynthesis.speak(msg), 10000);
                 }
                 mode = "calibration";
+                $('#videobox').css({'display':'block','margin':'0 auto'});
                 webgazer.showPredictionPoints(true);
                 $('#gazedot').css('opacity',0.7);
                 hasCalib = true;
