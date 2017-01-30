@@ -1,0 +1,13 @@
+body{
+	background-image: url("http://pngimg.com/upload/face_PNG5646.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 36.63003663%;
+}
+#buttonbox button{
+	width: 100%;
+	height: 20px;
+}
+#buttonbox h2{
+	font-size: 1.3em;
+}
