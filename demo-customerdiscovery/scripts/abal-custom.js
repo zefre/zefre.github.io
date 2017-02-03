@@ -36,17 +36,17 @@ $( document ).ready(function() {
 
 
             $("#useMode").click(function(){
-                //if(!hasCalib){
-                    //alert("Please calibrate first");
-                  //  return false;
-                //}
+                if(!hasCalib){
+                    alert("Please calibrate first");
+                    return false;
+                }
                 else{
                     if(mode !== "use"){
                         loopRun= 0; //reset, so that speech doesn't go bonkers
                     }
                     mode = "use";
                     webgazer.showPredictionPoints(true);
-                    //$('#gazedot').css('opacity',0);
+                    $('#gazedot').css('opacity',0);
                 }
             });
 
