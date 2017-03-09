@@ -9,7 +9,7 @@
     </HEAD>
     <BODY LANG="en-US" LINK="#0000ff" DIR="LTR">
     <div id="mydiv">
-        
+
     </div>
 
         <script src = "scripts/abal-custom.js"></script>
@@ -29,7 +29,7 @@
             var height = 240;
             var topDist = '0px';
             var leftDist = '0px';
-    
+
             var setup = function() {
                 var video = document.getElementById('webgazerVideoFeed');
                 video.style.display = 'block';
@@ -74,22 +74,21 @@
                 }
             }
             setTimeout(checkIfReady,100);
-    
-}; 
+
+};
 
 window.onbeforeunload = function() {
     //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
-    window.localStorage.clear(); //Comment out if you want to save data across different sessions 
+    window.localStorage.clear(); //Comment out if you want to save data across different sessions
 }
         </script> 
-        <div id = "videobox" style = "display:none;">
         </div>
         <div id = "buttonbox" style = "width:8%;height:42.5%;background-color:blue;opacity:.3;float:right;">
             <h2>CONTROL</h2>
             <button id = "calibMode">CALIBRATE</button>
             <br>
             <button id = "useMode">USE</button>
-            <br>           
+            <br>
             <button id = "pause">PAUSE</button>
         </div>
         <div id = "devbox" style = "width:8%;height:42.5%;background-color:blue;opacity:.3;float:right;clear:both;">

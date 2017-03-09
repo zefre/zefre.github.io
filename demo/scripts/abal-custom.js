@@ -1,6 +1,6 @@
 
 $( document ).ready(function() {
-            
+
 
             /*GLOBAL STATE VARS */
             mode = "none";
@@ -16,7 +16,7 @@ $( document ).ready(function() {
             /*END GLOBAL STATE */
 
             /* BUTTON LISTENERS */
-            
+
 
             $("#calibMode").click(function(){
                 if(!hasCalib){
@@ -28,7 +28,7 @@ $( document ).ready(function() {
                     //setTimeout(window.speechSynthesis.speak(msg), 10000);
                 }
                 mode = "calibration";
-                $('#videobox').css({'display':'block','float':'right','width': '400px','height':'400px','color':'black'});
+                //$('#videobox').css({'display':'block','float':'right','width': '400px','height':'400px','color':'black'});
                 webgazer.showPredictionPoints(true);
                 $('#gazedot').css('opacity',0.7);
                 hasCalib = true;
@@ -76,7 +76,7 @@ $( document ).ready(function() {
                     mode = "use";
                     $('#gazedot').css('opacity',0);
                 }
-                
+
             });
 
             $("#forceIn").click(function(){
@@ -86,7 +86,7 @@ $( document ).ready(function() {
                 else mode = "forceIn";
                 console.log(mode);
             });
-            
+
 
             $("#forceOut").click(function(){
                 if(mode !== "developer" && mode !== "forceIn"){
@@ -104,7 +104,7 @@ $( document ).ready(function() {
             });
             /*END LISTENERS*/
 
-            
+
             function getTransform(el) {
                 var results = $(el).css('-webkit-transform').match(/matrix(?:(3d)\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))(?:, (\d+)), \d+\)|\(\d+(?:, \d+)*(?:, (\d+))(?:, (\d+))\))/)
 
@@ -154,8 +154,8 @@ $( document ).ready(function() {
                     wasInBounds = false;
                 }
             }
-                
-            
+
+
             function isInBounds(coords){
                 var w = window.innerWidth;
                 var h = window.innerHeight;
